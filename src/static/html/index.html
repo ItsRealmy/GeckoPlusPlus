@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/rubik.css" />
+    <link rel="stylesheet" href="../css/mono.css" />
+    <link rel="stylesheet" href="../../../node_modules/@mdi/font/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/libs/vue.js"></script>
+    <title>Gecko++</title>
+</head>
+
+<body>
+    <div class="TitleBar">
+        <div class="Left">
+            <div class="Logo">
+                <img src="../svg/logo.svg" />
+            </div>
+
+            <div class="Menu">
+                <div class="Item" v-for="(item, index) in menu" :key="index" @click="window.menu.popupMenu(item.role)">{{ item.label }}</div>
+            </div>
+        </div>
+
+        <div class="Center">
+            <p id="WindowTitle">{{ title }}</p>
+        </div>
+
+        <div class="Right">
+            <div class="WindowAction" @click="minimize"><div class="mdi mdi-window-minimize"></div></div>
+            <div class="WindowAction" @click="maximize"><div class="mdi mdi-window-maximize"></div></div>
+            <div class="WindowAction Close" @click="close"><div class="mdi mdi-close"></div></div>
+        </div>
+    </div>
+
+    <div class="TabView">
+        <div class="Tabs">
+            <tab v-for="(tab, index) in tabs" :key="index" :name="tab.name" :active="activeTab == tab.id && 'true'" @click.native="activeTab = tab.id"></tab>
+        </div>
+
+        <div class="TabContents">
+            <div v-for="(tab, index) in tabs" :key="index" :tabid="index" class="TabContent" :class="activeTab !== tab.id && `Hide`"></div>
+        </div>
+    </div>
+
+    <!--Monaco Editor-->
+    <script src="../../../node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="../../../node_modules/monaco-themes/dist/monaco-themes.js"></script>
+
+    <!--App scripts-->
+    <script src="../js/dynamicStyles.js"></script>
+    <script src="../js/createElementFromHTML.js"></script>
+    <script src="../js/titleBar.js"></script>
+    <script src="../js/tabs.js"></script>
+</body>
+
+</html>

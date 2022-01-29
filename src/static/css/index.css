@@ -1,0 +1,165 @@
+:root {
+    --Accent: #7AAF67;
+    
+    --Text: #CCCCCC;
+
+    --TopBG: #1E1E1E;
+    --TabBarBG: #242424;
+    --BodyBG: #181818;
+
+    --MenuItemHover: #363636;
+
+    --BorderColor: #2F2F2F;
+
+    font-size: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--BodyBG);
+    color: var(--Text);
+    font-family: "Rubik", sans-serif;
+    height: 100vh;
+}
+
+.TitleBar {
+    position: relative;
+    height: 2.5rem;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+    border-bottom: 0.167rem solid var(--BorderColor);
+    box-sizing: border-box;
+    background: var(--TopBG);
+}
+
+.TitleBar > .Left {
+    position: absolute;
+    height: 2.5rem;
+    left: 0;
+    display: inline-flex;
+    -webkit-app-region: no-drag;
+}
+
+.Logo {
+    height: 2.5rem;
+    width: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
+.Logo > img {
+    height: 50%;
+}
+
+.Menu {
+    display: flex;
+}
+
+.Menu > .Item {
+    height: 2.5rem;
+    padding: 0 0.667rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.Menu > .Item:hover {
+    cursor: pointer;
+    background: var(--MenuItemHover);
+}
+
+.TitleBar > .Center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+.TitleBar > .Right {
+    position: absolute;
+    right: 0;
+    height: 2.5rem;
+    display: inline-flex;
+    -webkit-app-region: no-drag;
+}
+
+.WindowAction {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.WindowAction > .mdi {
+    font-size: 1.2rem;
+}
+
+.WindowAction:hover {
+    cursor: pointer;
+    background: var(--MenuItemHover);
+}
+
+.WindowAction.Close:hover {
+    background: rgb(180, 34, 34);
+}
+
+.WindowAction.Close:hover > .mdi {
+    color: white;
+}
+
+.Tabs {
+    background: var(--TabBarBG);
+    height: 2.917rem;
+    display: flex;
+}
+
+.Tab {
+    height: 2.917rem;
+    min-width: 10rem;
+    padding: 0.833rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    user-select: none;
+    cursor: pointer;
+}
+
+.Tab:not(.Active) {
+    border-right: 0.167rem solid var(--BorderColor);
+}
+
+.Tab.Active {
+    background: var(--BodyBG);
+    border-top: 0.167rem solid var(--Accent);
+}
+
+.TabContents {
+    height: calc(100vh - 2.5rem - 2.917rem);
+}
+
+.TabContent {
+    height: 100%;
+    overflow: auto;
+}
+
+.TabContent.Hide {
+    display: none;
+}
+
+.Editor {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
